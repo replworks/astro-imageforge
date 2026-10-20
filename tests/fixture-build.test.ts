@@ -46,5 +46,8 @@ describe("runtime settings in a fixture build", () => {
       );
       expect(page).toContain('title="Hello"');
     }
+    expect(mdxHtml).toContain(
+      'src="https://forge.example/images/docs/cat.jpg?w=480" class="rounded"',
+    );
   });
 });
