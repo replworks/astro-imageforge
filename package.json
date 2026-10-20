@@ -1,0 +1,46 @@
+{
+  "name": "@replworks/astro-imageforge",
+  "version": "0.1.0",
+  "description": "An Astro client for the Image Forge service.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./runtime": {
+      "types": "./dist/runtime.d.ts",
+      "import": "./dist/runtime.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "astro": "^7.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/mdx": "latest",
+    "astro": "^7.0.0",
+    "prettier": "latest",
+    "satteri": "latest",
+    "typescript": "latest",
+    "vitest": "latest"
+  }
+}
