@@ -1,8 +1,12 @@
 # Astro Imageforge
 
 [![CI](https://github.com/replworks/astro-imageforge/actions/workflows/ci.yml/badge.svg)](https://github.com/replworks/astro-imageforge/actions/workflows/ci.yml)
+[![Publish package](https://github.com/replworks/astro-imageforge/actions/workflows/publish.yml/badge.svg)](https://github.com/replworks/astro-imageforge/actions/workflows/publish.yml)
+[![update-changelog](https://github.com/replworks/astro-imageforge/actions/workflows/update-changelog.yml/badge.svg)](https://github.com/replworks/astro-imageforge/actions/workflows/update-changelog.yml)
 [![npm version](https://img.shields.io/npm/v/%40replworks%2Fastro-imageforge?logo=npm)](https://www.npmjs.com/package/@replworks/astro-imageforge)
 [![npm downloads](https://img.shields.io/npm/dm/%40replworks%2Fastro-imageforge?logo=npm)](https://www.npmjs.com/package/@replworks/astro-imageforge)
+[![Astro](https://img.shields.io/badge/Astro-7.x-FF5D01?logo=astro&logoColor=white)](https://astro.build/)
+[![ImageForge](https://img.shields.io/badge/ImageForge-2563EB)](https://if.repl.net)
 
 @replworks/astro-imageforge is a client for the Image Forge service
 
