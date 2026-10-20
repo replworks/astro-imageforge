@@ -1,6 +1,7 @@
 import type { AstroIntegration } from "astro";
 import type { Plugin } from "vite";
 import { loadSettings, type ImageForgeOptions } from "./settings.js";
+import { createMarkdownImagePlugin } from "./markdown.js";
 
 export type { ImageForgeOptions } from "./settings.js";
 
@@ -31,6 +32,17 @@ const integration = (options: ImageForgeOptions = {}): AstroIntegration => ({
         base: config.base,
         site: config.site?.toString(),
       };
+      if (config.markdown.processor.name !== "satteri") {
+        throw new Error(
+          "@replworks/astro-imageforge requires the Sätteri Markdown processor",
+        );
+      }
+
+      const processor = config.markdown.processor as {
+        options: { hastPlugins?: unknown[] };
+      };
+      processor.options.hastPlugins ??= [];
+      processor.options.hastPlugins.push(createMarkdownImagePlugin(settings));
       updateConfig({
         vite: {
           plugins: [settingsPlugin(settings)],

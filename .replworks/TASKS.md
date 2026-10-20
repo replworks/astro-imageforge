@@ -53,7 +53,7 @@ AC- IDs refer to PRODUCT_SPEC.md. C- IDs and section numbers refer to ARCHITECTU
     - The parser returns `options` and `consumed` and has no document-tree dependency (ARCHITECTURE.md Section 5).
     - Unit tests passing.
 
-- [ ] T-006 Developer sizes Markdown images through the title in `.md` and `.mdx`
+- [x] T-006 Developer sizes Markdown images through the title in `.md` and `.mdx`
   - Satisfies: PRODUCT_SPEC.md Markdown Image DSL; Errors and non-goals
   - External boundary: no
   - Acceptance criteria:

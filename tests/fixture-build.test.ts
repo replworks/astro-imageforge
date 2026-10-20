@@ -31,5 +31,20 @@ describe("runtime settings in a fixture build", () => {
     expect(html).toContain(
       'src="https://forge.example/images/docs/cat.jpg?w=480"',
     );
+
+    const markdownHtml = await readFile(
+      join(outDir, "markdown/index.html"),
+      "utf8",
+    );
+    const mdxHtml = await readFile(
+      join(outDir, "markdown-mdx/index.html"),
+      "utf8",
+    );
+    for (const page of [markdownHtml, mdxHtml]) {
+      expect(page).toContain(
+        'src="https://forge.example/images/docs/cat.jpg?w=480&amp;h=320&amp;fit=fill"',
+      );
+      expect(page).toContain('title="Hello"');
+    }
   });
 });
