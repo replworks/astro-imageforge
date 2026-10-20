@@ -44,7 +44,7 @@ AC- IDs refer to PRODUCT_SPEC.md. C- IDs and section numbers refer to ARCHITECTU
     - `./runtime` reads settings through C4 in a fixture build.
     - Unit tests passing.
 
-- [ ] T-005 DSL Parser maps tokens to options
+- [x] T-005 DSL Parser maps tokens to options
   - Satisfies: PRODUCT_SPEC.md Markdown Image DSL (token table and rules)
   - External boundary: no
   - Acceptance criteria:
