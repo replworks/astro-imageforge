@@ -71,7 +71,7 @@ AC- IDs refer to PRODUCT_SPEC.md. C- IDs and section numbers refer to ARCHITECTU
     - A fixture `.mdx` page with `<img class>` renders the expected HTML in an Astro 7 build.
     - Unit tests passing.
 
-- [ ] T-008 README first-line slot states the package is a client for the Image Forge service
+- [x] T-008 README first-line slot states the package is a client for the Image Forge service
   - Satisfies: PRODUCT_SPEC.md AC-018
   - External boundary: no
   - Acceptance criteria:
