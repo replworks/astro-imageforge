@@ -7,6 +7,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/%40replworks%2Fastro-imageforge?logo=npm)](https://www.npmjs.com/package/@replworks/astro-imageforge)
 [![Astro](https://img.shields.io/badge/Astro-7.x-FF5D01?logo=astro&logoColor=white)](https://astro.build/)
 [![ImageForge](https://img.shields.io/badge/ImageForge-2563EB)](https://if.repl.net)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 @replworks/astro-imageforge is a client for the Image Forge service
 
