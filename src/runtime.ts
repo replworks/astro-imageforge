@@ -9,6 +9,8 @@ export interface ImageForgeUrlOptions {
   f?: unknown;
 }
 
+const optionOrder = ["w", "h", "fit", "q", "f"] as const;
+
 function isPassThroughUrl(path: string): boolean {
   return /^(?:https?:)?\/\//.test(path) || path.startsWith("data:");
 }
@@ -29,6 +31,25 @@ export function resolveSourceUrl(
     : sourcePath;
 }
 
+export function composeForgeUrl(
+  sourceUrl: string,
+  options: ImageForgeUrlOptions,
+  configuration: Pick<ImageForgeSettings, "baseUrl" | "service">,
+): string {
+  if (!configuration.service) {
+    throw new Error("Image Forge service is not configured");
+  }
+
+  const source = new URL(sourceUrl, "http://imageforge.local");
+  const query = optionOrder
+    .filter((name) => options[name] != null)
+    .map((name) => `${name}=${String(options[name])}`)
+    .join("&");
+  const baseUrl = configuration.baseUrl.replace(/\/+$/, "");
+
+  return `${baseUrl}/${configuration.service.replace(/^\/+|\/+$/g, "")}${source.pathname}?${query}`;
+}
+
 export function imageForge(
   path: string | null | undefined,
   options: ImageForgeUrlOptions = {},
@@ -38,5 +59,9 @@ export function imageForge(
   }
 
   const sourceUrl = resolveSourceUrl(path, settings);
-  return options.w == null ? sourceUrl : sourceUrl;
+  if (options.w == null || isPassThroughUrl(path)) {
+    return sourceUrl;
+  }
+
+  return composeForgeUrl(sourceUrl, options, settings);
 }

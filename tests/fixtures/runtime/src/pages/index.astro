@@ -1,0 +1,7 @@
+---
+import { imageForge } from "../../../../../src/runtime.ts";
+
+const src = imageForge("cat.jpg", { w: 480 });
+---
+
+<img src={src} alt="Cat" />
