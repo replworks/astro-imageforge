@@ -10,6 +10,7 @@ import {
   DEFAULT_PREFIX,
   resolveSettings,
 } from "../src/settings.js";
+import { parseDsl } from "../src/parser.js";
 
 describe("package foundation", () => {
   it("exports an Astro integration factory", () => {
@@ -100,6 +101,39 @@ describe("package foundation", () => {
       baseUrl: "https://custom.example",
       service: "custom",
       prefix: "img-",
+    });
+  });
+
+  it("maps every DSL token, clamps values, and uses the last value", () => {
+    expect(
+      parseDsl(
+        "if-w--10 if-w-3000 if-h-320 if-q-0 if-q-120 if-crop if-fit-auto if-webp if-auto if-png",
+      ),
+    ).toEqual({
+      options: { w: 2000, h: 320, q: 100, fit: "auto", f: "png" },
+      consumed: [
+        "if-w--10",
+        "if-w-3000",
+        "if-h-320",
+        "if-q-0",
+        "if-q-120",
+        "if-crop",
+        "if-fit-auto",
+        "if-webp",
+        "if-auto",
+        "if-png",
+      ],
+    });
+  });
+
+  it("supplies width zero, preserves unknown tokens, and supports a custom prefix", () => {
+    expect(parseDsl("keep if-fill if-unknown", "if-")).toEqual({
+      options: { fit: "fill", w: 0 },
+      consumed: ["if-fill"],
+    });
+    expect(parseDsl("img-w-480 img-crop", "img-")).toEqual({
+      options: { w: 480, fit: "fill" },
+      consumed: ["img-w-480", "img-crop"],
     });
   });
 });
