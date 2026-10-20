@@ -26,7 +26,11 @@ const integration = (options: ImageForgeOptions = {}): AstroIntegration => ({
   hooks: {
     "astro:config:setup": ({ command, config, updateConfig }) => {
       const mode = command === "dev" ? "development" : "production";
-      const settings = loadSettings(options, mode, config.root.pathname);
+      const settings = {
+        ...loadSettings(options, mode, config.root.pathname),
+        base: config.base,
+        site: config.site?.toString(),
+      };
       updateConfig({
         vite: {
           plugins: [settingsPlugin(settings)],

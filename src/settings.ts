@@ -10,6 +10,8 @@ export interface ImageForgeSettings {
   baseUrl: string;
   service?: string;
   prefix: string;
+  base?: string;
+  site?: string;
 }
 
 export const DEFAULT_BASE_URL = "https://img.repl.net";
