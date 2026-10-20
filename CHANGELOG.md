@@ -1,13 +1,5 @@
 # Release Notes
 
-## v0.1.1 - 2026-10-20
-
-### What's Changed
-
-* fix: normalize npm repository metadata by [@replworks-bot](https://github.com/replworks-bot) in https://github.com/replworks/astro-imageforge/pull/12
-
-**Full Changelog**: https://github.com/replworks/astro-imageforge/compare/v0.1.0...v0.1.1
-
 ## v0.1.0 - 2026-10-20
 
 ### What's Changed
