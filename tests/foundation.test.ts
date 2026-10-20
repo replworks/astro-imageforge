@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 import imageforge from "../src/index.js";
-import { imageForge, resolveSourceUrl } from "../src/runtime.js";
+import {
+  composeForgeUrl,
+  imageForge,
+  resolveSourceUrl,
+} from "../src/runtime.js";
 import {
   DEFAULT_BASE_URL,
   DEFAULT_PREFIX,
@@ -48,6 +52,31 @@ describe("package foundation", () => {
     expect(
       imageForge("cat.jpg", { h: 320, fit: "fill", q: 80, f: "webp" }),
     ).toBe("/cat.jpg");
+  });
+
+  it("composes a Forge URL in option order without encoding values", () => {
+    expect(
+      composeForgeUrl(
+        "https://example.com/docs/cat.jpg",
+        { w: 480, h: 320, fit: "fill", q: 80, f: "webp&raw" },
+        { baseUrl: "https://img.repl.net", service: "service" },
+      ),
+    ).toBe(
+      "https://img.repl.net/service/docs/cat.jpg?w=480&h=320&fit=fill&q=80&f=webp&raw",
+    );
+  });
+
+  it("uses width zero and requires service only for Forge URLs", () => {
+    expect(imageForge("cat.jpg", { w: 480 })).toBe(
+      "https://img.repl.net/service/cat.jpg?w=480",
+    );
+    expect(() =>
+      composeForgeUrl(
+        "/cat.jpg",
+        { w: 480 },
+        { baseUrl: "https://img.repl.net" },
+      ),
+    ).toThrow(/service/i);
   });
 
   it("resolves defaults and gives options precedence over environment values", () => {
