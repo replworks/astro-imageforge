@@ -82,4 +82,30 @@ describe("Markdown image plugin", () => {
     );
     expect(result.code).toContain('title: "Hello"');
   });
+
+  it("rewrites literal MDX img classes and leaves expression classes unchanged", async () => {
+    const processor = satteri({
+      hastPlugins: [createMarkdownImagePlugin(settings)],
+    });
+    const renderer = await processor.createMdxRenderer({}, { optimize: false });
+    const result = await renderer.process(
+      [
+        '<img src="/cat.jpg" class="rounded if-w-480" />',
+        '<img src="/dog.jpg" class="if-w-480" />',
+        "<img src={source} class={classes} />",
+      ].join("\n"),
+      "content.mdx",
+      {},
+    );
+
+    expect(result.code).toContain(
+      'src: "https://img.repl.net/images/cat.jpg?w=480"',
+    );
+    expect(result.code).toContain('class: "rounded"');
+    expect(result.code).toContain(
+      'src: "https://img.repl.net/images/dog.jpg?w=480"',
+    );
+    expect(result.code).not.toContain('class: "if-w-480"');
+    expect(result.code).toContain("class: classes");
+  });
 });

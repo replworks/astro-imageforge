@@ -63,7 +63,7 @@ AC- IDs refer to PRODUCT_SPEC.md. C- IDs and section numbers refer to ARCHITECTU
     - In that fixture build, a rewritten image is not altered by Astro's own image handling.
     - Unit tests passing.
 
-- [ ] T-007 Developer sizes `<img>` elements through `class` in `.mdx`
+- [x] T-007 Developer sizes `<img>` elements through `class` in `.mdx`
   - Satisfies: PRODUCT_SPEC.md Markdown Image DSL
   - External boundary: no
   - Acceptance criteria:
