@@ -1,6 +1,8 @@
 # Astro Imageforge
 
 [![CI](https://github.com/replworks/astro-imageforge/actions/workflows/ci.yml/badge.svg)](https://github.com/replworks/astro-imageforge/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/%40replworks%2Fastro-imageforge?logo=npm)](https://www.npmjs.com/package/@replworks/astro-imageforge)
+[![npm downloads](https://img.shields.io/npm/dm/%40replworks%2Fastro-imageforge?logo=npm)](https://www.npmjs.com/package/@replworks/astro-imageforge)
 
 @replworks/astro-imageforge is a client for the Image Forge service
 
