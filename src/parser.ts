@@ -1,4 +1,4 @@
-import type { ImageForgeUrlOptions } from "./runtime.js";
+import type { ImageForgeUrlOptions } from "./url-api.js";
 
 export interface ParsedDsl {
   options: ImageForgeUrlOptions;
